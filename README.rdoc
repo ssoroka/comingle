@@ -1,6 +1,42 @@
-= comingle
+= Comingle
 
-Description goes here.
+simple plugin to provide active_resource API to mingle.  Tested with Mingle 2.3
+
+== Setup
+
+1. Install as either a plugin:
+
+    ruby script/plugin install <git repo path here>
+      
+or as a gem:
+
+    sudo gem install ssoroka-comingle
+    
+2. copy the plugin's config/mingle.yml to your project config/ directory, edit as appropriate.
+3. Set Mingle::Base config settings:
+
+If using rails, add a config/initializer to load settings for the mingle class.  There is an example initializer in config/initializers/comingle.rb
+
+To use this outside of Rails, set the configuration with something like:
+
+    Mingle::Base.setup_from_config(File.join(File.dirname(__FILE__), %w(config mingle.yml)))
+
+== Examples
+
+Try:
+
+    last_card = Mingle::Card.find(:last)
+    puts last_card.name
+    
+    # update the updated_at timestamp of the card, nothing too destructive. :)
+    last_card.updated_at = Time.now
+    last_card.save
+
+== Bugs
+
+There is a known problem with updating a card's comments directly, changing the comments and saving the card will not actually write the new comments.  I hear this is going to be resolved in Mingle 3.0.  I'll have to review it when Mingle 3.0 is released.
+
+One work-around is to use transitions instead, which seem to have no issues updating comments.
 
 == Copyright
 

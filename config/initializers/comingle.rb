@@ -1,0 +1,1 @@
+Mingle::Base.setup_from_config(File.join(Rails.root, %w(config mingle.yml)))

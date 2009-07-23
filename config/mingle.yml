@@ -1,0 +1,5 @@
+mingle:
+  domain: mingle.mydomain.com
+  project: rails_project
+  user: mingle_user
+  password: mingle_password
